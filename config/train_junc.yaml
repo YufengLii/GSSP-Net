@@ -1,0 +1,63 @@
+# train setting
+is_train: True
+train_flag: "junc"
+gpu: 1
+seed: 0
+last_epoch: -1
+save_checkpoint: True
+logdir: ./log
+checkpointdir: ./checkpoints
+train_batch_size: 16
+max_junction_num: 512
+junc_score_thresh: 0.05
+image_size: [512, 512]
+lr_junc: 0.0004
+lr_graph: 0.0001
+weight_decay: 0
+log_junc_path: ./log/junc
+log_graph_path: ./log/graph
+num_junc_epochs: 20
+num_graph_epochs: 5
+log_junc_print_freq: 10
+log_graph_print_freq: 1
+config_path: './config'
+config_file: 'train_junc.yaml'
+num_workers: 4
+link_render_number: 1024
+Train_backbone: True
+
+# Backbone
+EdgeBackboneName: "dexined" 
+JuncPred_channels_list: [1, 2]
+JuncPred_input_channels: 256
+pidinet_dil: 24 # 12 8
+pidinet_sa: True
+pidinet_inplane: 60
+pidinet_pdcs: "carv4"
+# JuncPred_dexined_channels_list: [1]
+
+# Dataset configurations
+Train_Data_Root: "/remote-home/1910682/lunwen2/AB2/dataset2/train"
+Test_Data_Root: "/remote-home/1910682/lunwen2/AB2/dataset2/test"
+
+
+# StructureParsingNet
+pe_length: 256
+heatmap_size: [128, 128]
+dexinedoutchannels: 1152
+SHGoutchannels: 256
+gnn_in_channels: 1024
+gnn_out_channels: 512
+EncoderName: "Transformer"
+
+### Edge Sample 
+Edge_Sample_method: "ours"  # Rrange Kneiborghood
+##### edge guided
+max_line_length: 384
+avg_edge_thresh: 0.75
+continue_edge_thresh: 0.3
+angle_thresh: 3
+### K Neiborghoods
+Max_Neiborghoods: 16
+### R range
+Max_Range: 64
